@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Define the target URL
+URL="http://13.201.92.54/"
+
+# Number of times to hit the URL
+HIT_COUNT=1000
+
+echo "Starting to hit $URL $HIT_COUNT times..."
+
+for ((i=1; i<=HIT_COUNT; i++))
+do
+    curl -s -o /dev/null -w "Request #$i: %{http_code}\n" "$URL"
+done
+
+echo "Completed hitting $URL $HIT_COUNT times."
